@@ -17,6 +17,7 @@
         <title>Plataforma de egresados de la Universidad de Cartagena</title>
         <link rel="stylesheet" href="css/components.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/historial.css">
     </head>
     <body>
         <header>
@@ -71,7 +72,35 @@
                     </ul>
                 </nav>
             </section><section  class="content">
-                <!--contenido de la seccion-->
+                <h2>Historial de encuestas realizadas</h2>
+                <p>En esta sección encontraras todas las encuestas que ya hayas 
+                contestado.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Codigo</td>
+                            <td>Nombre</td>
+                            <td>Realizada</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Codigo de la encuesta</td>
+                            <td>Nombre de la encuesta</td>
+                            <td>Fecha en el cual se realizo la encuesta</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo de la encuesta</td>
+                            <td>Nombre de la encuesta</td>
+                            <td>Fecha en el cual se realizo la encuesta</td>
+                        </tr>
+                        <tr>
+                            <td>Codigo de la encuesta</td>
+                            <td>Nombre de la encuesta</td>
+                            <td>Fecha en el cual se realizo la encuesta</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
         </div>
         <footer>
