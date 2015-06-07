@@ -1,0 +1,236 @@
+input[type*='checkbox'] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+input.namePoll {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 200%;
+    border: 1px solid #eaeaea;
+    width: 100%;
+    color: #666666;
+    background: #f7f7f7;
+    border-radius: 4px;
+    
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+}
+
+input.namePoll:focus {
+    background: #fff;
+    color: #EFB100;
+    border: 1px solid #fff;
+}
+
+.question {
+    background: #f5f5f5;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 50px 0;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.question:last-of-type {
+    margin-bottom: 15px;
+}
+
+.question > .title {
+    position: absolute;
+    top: -25px;
+    left: 15px;
+    background: #EFB100;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    font-weight: 400;
+    font-size: 200%;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #e7e7e7;
+    padding-top: 9px;
+}
+
+.question > p:first-of-type {
+    margin-top: 30px;
+}
+
+.question textarea {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    border: 1px solid #cccccc;
+    width: 100%;
+    resize: none;
+    box-shadow: none;
+    outline: none;
+    padding: 8px;
+    color: #666666;
+}
+
+.question textarea:focus {
+    border: 1px solid #EFB100;
+}
+
+.option input,
+.option button {
+    display:  inline;
+}
+
+.option input {
+    font-family: 'Lato', sans-serif;
+    background: #fff;
+    width: 250px;
+}
+
+.btn-deletequestion {
+    background: #e7e7e7;
+    margin: 0;
+    padding: 8px;
+    font-size: 120%;
+    border-radius: 50%;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+.btn-deletequestion:hover {
+    background: none;
+    color: #da4646;
+}
+
+.btn-deletequestion:active {
+    background: #da4646;
+    color: #fff;
+    
+    transition: none;
+}
+
+.btn-removeoption {
+    margin: 0 0 0 5px;
+    padding: 8px 7px 7px 9px;
+    background: #da4646;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+.btn-removeoption:hover {
+    background: #b61d1d;
+    box-shadow: 0 0 5px #EFB100;
+}
+
+.btn-removeoption:active {
+    background: #fff;
+    color: #da4646;
+    transition: none;
+}
+
+.btn-addoption {
+    position: relative;
+    font-weight: 400;
+    margin: 0;
+    padding: 8px 0;
+    opacity: 1;
+}
+
+.btn-addoption:before {
+    background: #acacac;
+    color: #f4f4b3;
+    margin-right: 8px;
+    padding: 8px 6px 8px 8px;
+    border-radius: 50%;
+    position: relative;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+.btn-addoption:hover:before {
+    background: #666666;
+    box-shadow: 0 0 5px #EFB100;
+}
+
+.btn-addoption:active:before {
+    top: -1px;
+    transition: none;
+}
+
+.btn-addoption:disabled {
+    opacity: .3;
+}
+
+.btn-add {
+    margin: 0;
+    padding: 12px 12px 10px 14px;
+    font-size: 180%;
+    background: #fff;
+    color: #acacac;
+    border-radius: 50%;
+    box-shadow: 1px 1px 8px #acacac;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+.btn-add:hover {
+    color: #666666;
+}
+
+.btn-add:active {
+    background: #acacac;
+    color: #fff;
+    box-shadow: none;
+    transition: none;
+}
+
+input.btn-save {
+    background: #EFB100;
+    margin: 25px 0 0 0;
+    color: #fff;
+    border: 0;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+input.btn-save:hover {
+    background: #e59800;
+}
+
+input.btn-save:active {
+    top: -1px;
+    transition: none;
+}
+
+.content h2 {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.btn-atras {
+    background: #EFB100;
+    color: #fff;
+    margin: 0 0 10px 0;
+    
+    transition: all .3s;
+}
+
+.btn-atras:hover {
+    background: #e59800;
+}
+
+.btn-atras:active {
+    top: -1px;
+    transition: none;
+}

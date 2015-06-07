@@ -1,0 +1,3 @@
+function closeMessage() {
+    $('.message').hide();
+}

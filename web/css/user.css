@@ -1,0 +1,131 @@
+.view-table p span {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.view-table select {
+    margin: 0 15px 0 0;
+    padding: 9px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #e6e6e6;
+    vertical-align: top;
+}
+
+.view-table select:focus {
+    border: 1px solid #EFB100;
+}
+
+.view-table form {
+    margin-bottom: 25px;
+}
+
+.btn-filtrar {
+    background: #EFB100;
+    color: white;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: inherit;
+    text-transform: uppercase;
+    padding: 9px 25px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.btn-filtrar:hover {
+    background: #d99100;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+.btn-filtrar:active {
+    top: -2px;
+}
+
+.btn-new-user {
+    background: #EFB100;
+    letter-spacing: 0;
+    margin: 0;
+    color: #fff;
+    padding: 10px 25px;
+}
+
+.btn-new-user:hover {
+    background: #d99100;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+form.btn-delete {
+    margin: 0;
+    padding: 0;
+}
+
+.user-code {
+    width: 110px;
+    text-transform: uppercase;
+}
+
+.user-mail {
+    text-transform: lowercase;
+}
+
+.user-prog {
+    text-transform: capitalize;
+}
+
+.user-business {
+    text-transform: capitalize;
+}
+
+.footer-table-page {
+    position: relative;
+    width: 100%;
+    text-align: right;
+    margin-top: 10px;
+    font-size: 75%;
+    text-transform: uppercase;
+}
+
+.footer-table-page a {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+}
+
+.footer-table-page a span {
+    background: none;
+    color: #464646;
+    padding: 5px 10px;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+.footer-table-page a:last-child span,
+.footer-table-page a:first-child span {
+    font-weight: 700;
+}
+
+.footer-table-page a span:hover,
+.footer-table-page a span:active {
+    background: #e6e6e6;
+}
+
+.footer-table-page .selected {
+    background: #464646;
+    color: #e6e6e6;
+}
+
+.footer-table-page .selected:hover,
+.footer-table-page .selected:active {
+    background: #464646;
+    color: #e6e6e6;
+}

@@ -1,0 +1,62 @@
+.content section>form {
+    margin: 10px 0;
+}
+
+.content section>form input {
+    width: 150px;
+    display: inline-block;
+    padding: 8px;
+    margin: 0 10px 0 0;
+    border: 1px solid #e6e6e6;
+    outline: none;
+    box-shadow: none;
+}
+
+.content section>form input:focus {
+    border: 1px solid #EFB100;
+}
+
+.content section>form input:last-child {
+    padding: 9px 25px;
+    border: none;
+    width: auto;
+}
+
+.btn-addprogram {
+    background: #EFB100;
+    color: #fff;
+}
+
+.btn-addprogram:hover {
+    background: #d99100;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+.btn-addprogram:active {
+    top: -1px;
+}
+
+.adv {
+    font-weight: 300;
+    font-size: 80%;
+    width: 164px;
+    margin: 0 10px 0 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+table {
+    max-width: 600px;
+}
+
+table td:nth-child(1) {
+    width: 20%;
+}
+
+.user-name {
+    text-transform: capitalize;
+}
+

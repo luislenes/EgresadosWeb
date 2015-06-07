@@ -1,0 +1,36 @@
+.form-change input {
+    width: 250px;
+}
+
+.form-change h3 {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 120%;
+    margin: 15px 0;
+    border-bottom: 1px solid #cccccc;
+}
+
+.form-change section {
+    display: inline-block;
+    margin: 0;
+    margin-right: 25px;
+}
+
+input.btn-save {
+    background: #EFB100;
+    width: auto;
+    color: #fff;
+    margin:  0;
+}
+
+.btn-save:hover {
+    background: #d99100;
+    
+    -webkit-transition: background .3s;
+    -moz-transition: background .3s;
+    transition: background .3s;
+}
+
+.btn-save:active {
+    top: -2px;
+}

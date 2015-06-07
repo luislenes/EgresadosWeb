@@ -1,0 +1,50 @@
+#container {
+    background: white;
+    max-width: 1024px;
+    padding: 20px;
+}
+
+#container h2 {
+    font-weight: 400;
+    margin: 10px 120px;
+}
+
+#container section {
+    display: block;
+    padding: 20px 0;
+    margin: 0 120px;
+}
+
+#container section form input {
+    font-family: "Lato", Calibri, Arial, sans-serif;
+    padding: 7px;
+    display: block;
+    margin-bottom: 10px;
+    width: 250px;
+    border: 1px solid #e6e6e6;
+}
+
+#container section form input:focus {
+    outline: 0;
+    border: 1px solid #EFB100;
+}
+
+#container section form input:last-child {
+    background: #EFB100;
+    color: white;
+    width: 100px;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+#container section form input:last-child:hover {
+    background: #e59800;
+    transition: all .3s;
+}
+
+#container p {
+    margin: 0 120px 25px 120px;
+}

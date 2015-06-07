@@ -1,0 +1,50 @@
+.content a,
+.content a:active {
+    color: #EFB100;
+}
+
+.content table a,
+.content table a:active {
+    color: #666666;
+}
+
+.btn-delete {
+    background: #da4646;
+    color: #fff;
+    margin: 0;
+    padding: 10px 15px;
+    border-bottom: 1px solid #b61d1d;
+    letter-spacing: 0;
+    
+    transition: all .3s;
+}
+
+.btn-delete:hover {
+    background: #b61d1d;
+}
+
+.btn-enable {
+    background: #839297;
+    color: #fff;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #636c70;
+    width: 126px;
+    text-align: center;
+    letter-spacing: 0;
+    
+    transition: all .3s;
+}
+
+.btn-enable:hover {
+    background: #1ea1cb;
+}
+
+.user-number {
+    text-align: center;
+    width: 50px;
+}
+
+.user-button {
+    width: 25px;
+}

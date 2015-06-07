@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?w3qx9w');
+    src:url('../fonts/icomoon.eot?#iefixw3qx9w') format('embedded-opentype'),
+        url('../fonts/icomoon.woff?w3qx9w') format('woff'),
+        url('../fonts/icomoon.ttf?w3qx9w') format('truetype'),
+        url('../fonts/icomoon.svg?w3qx9w#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-study:before {
+    content: "\e600";
+}
+
+.icon-setting:before {
+    content: "\e994";
+}
+
+.icon-delete:before {
+    content: "\e9ac";
+}
+
+.icon-delete2:before {
+    content: "\e9ad";
+}
+
+.icon-smile:before {
+    content: "\e9e1";
+}
+
+.icon-smile2:before {
+    content: "\e9e2";
+}
+
+.icon-sad:before {
+    content: "\e9e5";
+}
+
+.icon-sad2:before {
+    content: "\e9e6";
+}
+
+.icon-plus:before {
+    content: "\ea0a";
+}
+
+.icon-minus:before {
+    content: "\ea0b";
+}
+
+.icon-error:before {
+    content: "\ea0f";
+}
+
+.icon-good:before {
+    content: "\ea10";
+}
+
+.icon-html5:before {
+    content: "\eadf";
+}

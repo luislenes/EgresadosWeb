@@ -1,0 +1,89 @@
+#code-message, #txt-code {
+    display: inline-block;
+}
+
+#code-message {
+    font-weight: 400;
+    font-size: 80%;
+}
+
+.user-form {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.user-form h3 {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 120%;
+    margin: 15px 0;
+    border-bottom: 1px solid #cccccc;
+}
+
+.user-form section {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+}
+
+.user-form label, .user-form input {
+    display: block;
+}
+
+.user-form input,
+.user-form select {
+    background: inherit;
+    color: #656565;
+    border: 1px solid #d3d3d3;
+    padding: 8px;
+    outline: none;
+    box-shadow: none;
+    width: 242px;
+    margin: 5px 20px 10px 0;
+}
+
+.user-form select {
+    width:  auto;
+}
+
+.user-form input:focus,
+.user-form select:focus {
+    border: 1px solid #EFB100;
+}
+
+.user-form input:disabled {
+    background: rgba(0, 0, 0, .05);
+}
+
+.user-form .btn-create {
+    border: 0;
+    background: #EFB100;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    width: auto;
+    padding: 10px 35px;
+    margin: 25px 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.user-form .btn-create:hover {
+    background: #d99100;
+    
+    -webkit-transition: background .3s;
+    -moz-transition: background .3s;
+    transition: background .3s;
+}
+
+.user-form .btn-create:active {
+    top: -2px;
+}
+
+.user-form .btn-create:focus {
+    border: none;
+}
