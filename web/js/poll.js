@@ -200,10 +200,26 @@ app.controller('readEPollController', function ($scope, $http) {
 
     $http.get('encuesta')
             .success(function (data) {
-                console.log(data);
                 $scope.polls = data.filter(function (item) {
                     return item.enable;
                 });
+                $http.get('historialEncuesta')
+                        .success(function (data1) {
+                            console.log(data1);
+                            $scope.polls = $scope.polls.filter(function (item) {
+                                for (var i = 0; i < data1.length; i++) {
+                                    if (data1[i].poll === item.code) {
+                                        return false;
+                                    }
+                                }
+                                return true;
+                            });
+                            console.log($scope.polls);
+                            
+                        })
+                        .error(function (error) {
+                            console.log(error);
+                        });
             })
             .error(function (error) {
                 console.log(error);
@@ -273,6 +289,7 @@ app.controller('rePollController', function ($scope, $http) {
                     $scope.message = data;
                     $scope.showMessage = true;
                 });
+                window.location = "encuestas.jsp";
                 console.log($scope);
             },
             error: function (error) {
