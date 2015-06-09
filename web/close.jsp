@@ -1,7 +1,7 @@
 <%@page import="com.egresados.model.TipoDeUsuario"%>
-<%@page import="com.egresados.model.Usuario"%>
 <%@page import="com.egresados.model.Administrador"%>
 <%@page import="com.egresados.model.Persona"%>
+<%@page import="com.egresados.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     session = request.getSession(false);
@@ -11,16 +11,13 @@
     Usuario usuario = (Usuario) session.getAttribute("usuario");
 %>
 <!DOCTYPE html>
-<html ng-app="EgresadosModule">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Plataforma de egresados de la Universidad de Cartagena</title>
         <link rel="stylesheet" href="css/components.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/encuesta.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-        <script src="js/poll.js"></script>
+        <link rel="stylesheet" href="css/close.css">
     </head>
     <body>
         <header>
@@ -37,16 +34,16 @@
                         Persona p = (Persona) usuario;
                         fullname = p.getNombreCompleto();
                         email = p.getCorreo();
-                    } else if (usuario instanceof Administrador) {
+                    } else if (usuario instanceof Administrador){
                         Administrador admin = (Administrador) usuario;
                         fullname = admin.getNombre();
                         email = admin.getCorreo();
                     }
                 %>
                 <div class="c-profile">
-                    <h2 class="user-name"><%= fullname.toLowerCase()%></h2>
+                    <h2 class="user-name"><%= fullname.toLowerCase() %></h2>
                     <span>Usuario: <%= usuario != null ? usuario.getCodigo() : "no code"%></span>
-                    <span><%= email%></span>
+                    <span><%= email %></span>
                 </div>
                 <div class="logout right">
                     <form action="logout" method="POST" accept-charset="utf-8">
@@ -77,12 +74,10 @@
                         <% } %>
                     </ul>
                 </nav>
-            </section><section  class="content" ng-controller="readEPollController">
+            </section><section class="content">
                 <h2>Encuestas</h2>
                 <p>
-                    En la siguiente tabla se mostraran las encuestas que estan 
-                    disponibles, si le da en el nombre de la encuesta entonces 
-                    entrara a resolverla.
+                    En la siguiente tabla encontraras todas las encuestas.
                 </p>
                 <table>
                     <thead>
@@ -92,9 +87,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="poll in polls">
-                            <td><a ng-href="resolver.jsp?codigo={{poll.code}}">{{ poll.name}}</a></td>
-                            <td class="user-number">{{ poll.questions.length}}</td>
+                        <tr>
+                            <td><a href="questions.jsp">nombre de la encuesta</a></td>
+                            <td class="user-number">0</td>
+                        </tr>
+                        <tr>
+                            <td><a href="questions.jsp">nombre de la encuesta</a></td>
+                            <td class="user-number">0</td>
+                        </tr>
+                        <tr>
+                            <td><a href="questions.jsp">nombre de la encuesta</a></td>
+                            <td class="user-number">0</td>
                         </tr>
                     </tbody>
                 </table>

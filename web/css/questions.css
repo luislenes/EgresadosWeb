@@ -1,0 +1,21 @@
+.btn-enable {
+    background: #839297;
+    color: #fff;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #636c70;
+    width: 126px;
+    text-align: center;
+    letter-spacing: 0;
+    
+    transition: all .3s;
+}
+
+.btn-enable:hover {
+    background: #1ea1cb;
+}
+
+.user-number {
+    text-align: center;
+    width: 150px;
+}

@@ -79,10 +79,13 @@
                         <a href="program.jsp"><li class="item">Programas Academicos</li></a>
                         <% } %>
                         <% if (usuario != null && usuario.getTipo() == TipoDeUsuario.ADMINISTRADOR) { %>
-                        <a href="register_user.jsp"><li class="item select">Registro de Usuarios</li></a>
+                        <a href="register_user.jsp"><li class="item">Registro de Usuarios</li></a>
                         <% } %>
                         <% if (usuario != null && usuario.getTipo() == TipoDeUsuario.ADMINISTRADOR) { %>
                         <a href="register_encuestas.jsp"><li class="item">Registro de Encuestas</li></a>
+                        <% } %>
+                        <% if (usuario != null && usuario.getTipo() == TipoDeUsuario.ADMINISTRADOR) { %>
+                        <a href="close.jsp"><li class="item">Cerrar Respuestas</li></a>
                         <% } %>
                         <% if (usuario != null && usuario.getTipo() == TipoDeUsuario.EGRESADO) { %>
                         <a href="encuestas.jsp"><li class="item">Encuestas</li></a>
