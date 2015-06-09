@@ -11,13 +11,16 @@
     Usuario usuario = (Usuario) session.getAttribute("usuario");
 %>
 <!DOCTYPE html>
-<html>
+<html ng-app="EgresadosModule">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Plataforma de egresados de la Universidad de Cartagena</title>
         <link rel="stylesheet" href="css/components.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/historial.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="js/poll.js"></script>
     </head>
     <body>
         <header>
@@ -71,7 +74,7 @@
                         <% } %>
                     </ul>
                 </nav>
-            </section><section  class="content">
+            </section><section  class="content" ng-controller="hisPollController">
                 <h2>Historial de encuestas realizadas</h2>
                 <p>En esta sección encontraras todas las encuestas que ya hayas 
                 contestado.</p>
@@ -84,20 +87,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Codigo de la encuesta</td>
-                            <td>Nombre de la encuesta</td>
-                            <td>Fecha en el cual se realizo la encuesta</td>
-                        </tr>
-                        <tr>
-                            <td>Codigo de la encuesta</td>
-                            <td>Nombre de la encuesta</td>
-                            <td>Fecha en el cual se realizo la encuesta</td>
-                        </tr>
-                        <tr>
-                            <td>Codigo de la encuesta</td>
-                            <td>Nombre de la encuesta</td>
-                            <td>Fecha en el cual se realizo la encuesta</td>
+                        <tr ng-repeat="h in history">
+                            <td class="user-number">{{ h.poll}}</td>
+                            <td>{{ h.namePoll}}</td>
+                            <td class="user-number">{{ h.date}}</td>
                         </tr>
                     </tbody>
                 </table>

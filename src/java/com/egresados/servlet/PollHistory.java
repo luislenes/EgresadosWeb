@@ -5,6 +5,7 @@
  */
 package com.egresados.servlet;
 
+import com.egresados.dao.DaoEncuesta;
 import com.egresados.dao.DaoHistorialDeEncuestas;
 import com.egresados.model.HistorialDeEncuestas;
 import com.egresados.model.Usuario;
@@ -76,12 +77,13 @@ public class PollHistory extends HttpServlet {
         }
     }
 
-    private JSONObject convert(HistorialDeEncuestas historial) {
+    private JSONObject convert(HistorialDeEncuestas historial) throws SQLException {
         JSONObject json = new JSONObject();
 
         json.put("poll", historial.getCodigo());
         json.put("graduates", historial.getEgresado().getCodigo());
-        json.put("date", historial.getFecha().toString());
+        json.put("date", historial.getFecha().toString().substring(0, 10));
+        json.put("namePoll", DaoEncuesta.getInstance().find(historial.getCodigo()).getNombre());
 
         return json;
     }

@@ -301,6 +301,21 @@ app.controller('rePollController', function ($scope, $http) {
     
 });
 
+app.controller('hisPollController', function($scope, $http){
+    $scope.history = [];
+    
+    $http.get('historialEncuesta')
+            .success(function (data) {
+                console.log(data);
+                $scope.history = data;
+                console.log($scope.history);
+
+            })
+            .error(function (error) {
+                console.log(error);
+            });
+});
+
 (function ($) {
     $.get = function (key) {
         key = key.replace(/[\[]/, '\\[');
