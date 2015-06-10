@@ -1,3 +1,12 @@
-input[type="submit"] {
+input {
     display: inline-block;
+}
+
+input.btn {
+    display: block;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
 }

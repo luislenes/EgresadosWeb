@@ -98,7 +98,7 @@
                         <input type="checkbox" value="codigo_respuesta">
                         Lo que respondieron...
                     </p>
-                    <label></label>
+                    <label>Ahora, simplemente asignale un nombre a la opción o al grupo de respuestas.</label>
                     <input type="text">
                     <input type="submit" value="Tabular" class="btn btn-default">
                 </form>
