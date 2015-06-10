@@ -11,13 +11,16 @@
     Usuario usuario = (Usuario) session.getAttribute("usuario");
 %>
 <!DOCTYPE html>
-<html>
+<html ng-app="EgresadosModule">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Plataforma de egresados de la Universidad de Cartagena</title>
         <link rel="stylesheet" href="css/components.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/close.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="js/poll.js"></script>
     </head>
     <body>
         <header>
@@ -74,7 +77,7 @@
                         <% } %>
                     </ul>
                 </nav>
-            </section><section class="content">
+            </section><section class="content" ng-controller="closeAnswersController">
                 <h2>Encuestas</h2>
                 <p>
                     En la siguiente tabla encontraras todas las encuestas.
@@ -87,17 +90,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="questions.jsp">nombre de la encuesta</a></td>
-                            <td class="user-number">0</td>
-                        </tr>
-                        <tr>
-                            <td><a href="questions.jsp">nombre de la encuesta</a></td>
-                            <td class="user-number">0</td>
-                        </tr>
-                        <tr>
-                            <td><a href="questions.jsp">nombre de la encuesta</a></td>
-                            <td class="user-number">0</td>
+                        <tr ng-repeat="poll in polls">
+                            <td><a ng-href="questions.jsp?codigo={{poll.code}}">{{ poll.name }}</a></td>
+                            <td class="user-number">{{ poll.questions.length }}</td>
                         </tr>
                     </tbody>
                 </table>

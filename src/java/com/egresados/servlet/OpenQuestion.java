@@ -7,6 +7,7 @@ package com.egresados.servlet;
 
 import com.egresados.dao.DaoPregunta;
 import com.egresados.dao.DaoRespuesta;
+import com.egresados.model.Pregunta;
 import com.egresados.model.Respuesta;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,8 +27,8 @@ import org.json.simple.JSONObject;
  *
  * @author Luis
  */
-@WebServlet(name = "Answer", urlPatterns = {"/respuesta"})
-public class Answer extends HttpServlet {
+@WebServlet(name = "OpenQuestion", urlPatterns = {"/preguntasAbiertas"})
+public class OpenQuestion extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -36,27 +37,28 @@ public class Answer extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
 
         String codigo = req.getParameter("codigo");
-        DaoRespuesta instance = DaoRespuesta.getInstance();
+        DaoPregunta instance = DaoPregunta.getInstance();
 
         try {
-            if (codigo != null) {
-                List<Respuesta> respuestas = instance.list(codigo);
-
+            if(codigo != null){
+                List<Pregunta> preguntas = instance.listByCode(codigo);
+                List<Respuesta> respuestas = DaoRespuesta.getInstance().list(codigo);
                 JSONArray json = new JSONArray();
 
-                for (Respuesta respuesta : respuestas) {
-                    json.add(convert(respuesta));
+                for (Pregunta item : preguntas) {
+                    json.add(convert(item, respuestas));
                 }
 
                 try (PrintWriter out = resp.getWriter()) {
                     out.print(json.toString());
                 }
-            } else {
-                List<Respuesta> respuestas = instance.list();
+            }else{
+                List<Pregunta> preguntas = instance.list();
+                List<Respuesta> respuestas = DaoRespuesta.getInstance().list();
                 JSONArray json = new JSONArray();
 
-                for (Respuesta respuesta : respuestas) {
-                    json.add(convert(respuesta));
+                for (Pregunta item : preguntas) {
+                    json.add(convert(item, respuestas));
                 }
 
                 try (PrintWriter out = resp.getWriter()) {
@@ -67,20 +69,26 @@ public class Answer extends HttpServlet {
             Logger.getLogger(Poll.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private JSONObject convert(Respuesta respuesta) throws SQLException {
-        JSONObject json = new JSONObject();
 
-        json.put("poll", respuesta.getEncuesta());
-        json.put("graduates", respuesta.getEgresado());
-        json.put("question", respuesta.getPregunta());
-        json.put("nameQuestion", DaoPregunta.getInstance().find(respuesta.getPregunta()).getEnunciado());
-        json.put("content", respuesta.getContenido());
-        json.put("option", respuesta.getOpcion());
+    private JSONObject convert(Pregunta pregunta, List<Respuesta> respuestas) throws SQLException {
+        JSONObject json = new JSONObject();
+        
+        int r = 0;
+        
+        for (Respuesta respuesta : respuestas) {
+            if (true) {
+                
+            }
+        }
+
+//        json.put("poll", historial.getCodigo());
+//        json.put("graduates", historial.getEgresado().getCodigo());
+//        json.put("date", historial.getFecha().toString().substring(0, 10));
+//        json.put("namePoll", DaoEncuesta.getInstance().find(historial.getCodigo()).getNombre());
 
         return json;
     }
-
+    
 
     /**
      * Returns a short description of the servlet.
@@ -90,6 +98,6 @@ public class Answer extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

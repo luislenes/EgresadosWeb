@@ -316,6 +316,35 @@ app.controller('hisPollController', function($scope, $http){
             });
 });
 
+app.controller('closeAnswersController', function($scope, $http){
+    $scope.polls = [];
+
+    $http.get('encuesta')
+            .success(function (data) {
+                console.log(data);
+                $scope.polls = data;
+            })
+            .error(function (error) {
+                console.log(error);
+            });
+});
+
+app.controller('questionController', function($scope, $http){
+    $scope.questions = [];
+
+    $http.get('respuesta')
+            .success(function (data) {
+                console.log(data);
+                $scope.questions = data.filter(function(item){
+                    return item.option === null;
+                });
+                
+            })
+            .error(function (error) {
+                console.log(error);
+            });
+});
+
 (function ($) {
     $.get = function (key) {
         key = key.replace(/[\[]/, '\\[');
