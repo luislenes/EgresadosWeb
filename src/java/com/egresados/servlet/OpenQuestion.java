@@ -8,7 +8,6 @@ package com.egresados.servlet;
 import com.egresados.dao.DaoPregunta;
 import com.egresados.dao.DaoRespuesta;
 import com.egresados.model.Pregunta;
-import com.egresados.model.Respuesta;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -44,16 +43,18 @@ public class OpenQuestion extends HttpServlet {
                 JSONArray response = new JSONArray();
                 List<Pregunta> listQuestions = instance.listByCode(codigo);
                 for (Pregunta pregunta : listQuestions) {
-                    JSONObject json = new JSONObject();
-                    json.put("code", pregunta.getCodigo());
-                    json.put("question", pregunta.getEnunciado());
-                    
-                    DaoRespuesta dao = DaoRespuesta.getInstance();
-                    json.put("answers", dao.countAnswerByCodeQuestion(pregunta.getCodigo()));
-                    
-                    response.add(json);
+                    if (pregunta.getOpciones() == null || pregunta.getOpciones().isEmpty()) {
+                        JSONObject json = new JSONObject();
+                        json.put("code", pregunta.getCodigo());
+                        json.put("question", pregunta.getEnunciado());
+
+                        DaoRespuesta dao = DaoRespuesta.getInstance();
+                        json.put("answers", dao.countAnswerByCodeQuestion(pregunta.getCodigo()));
+
+                        response.add(json);
+                    }
                 }
-                
+
                 try (PrintWriter writer = resp.getWriter()) {
                     writer.print(response.toString());
                 }
@@ -63,7 +64,7 @@ public class OpenQuestion extends HttpServlet {
         } else {
             throw new NullPointerException("no se recibio el parametro codigo");
         }
-        
+
     }
 
     /**
