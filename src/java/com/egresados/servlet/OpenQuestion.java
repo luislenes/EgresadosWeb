@@ -39,56 +39,32 @@ public class OpenQuestion extends HttpServlet {
         String codigo = req.getParameter("codigo");
         DaoPregunta instance = DaoPregunta.getInstance();
 
-        try {
-            if(codigo != null){
-                List<Pregunta> preguntas = instance.listByCode(codigo);
-                List<Respuesta> respuestas = DaoRespuesta.getInstance().list(codigo);
-                JSONArray json = new JSONArray();
-
-                for (Pregunta item : preguntas) {
-                    json.add(convert(item, respuestas));
+        if (codigo != null) {
+            try {
+                JSONArray response = new JSONArray();
+                List<Pregunta> listQuestions = instance.listByCode(codigo);
+                for (Pregunta pregunta : listQuestions) {
+                    JSONObject json = new JSONObject();
+                    json.put("code", pregunta.getCodigo());
+                    json.put("question", pregunta.getEnunciado());
+                    
+                    DaoRespuesta dao = DaoRespuesta.getInstance();
+                    json.put("answers", dao.countAnswerByCodeQuestion(pregunta.getCodigo()));
+                    
+                    response.add(json);
                 }
-
-                try (PrintWriter out = resp.getWriter()) {
-                    out.print(json.toString());
-                }
-            }else{
-                List<Pregunta> preguntas = instance.list();
-                List<Respuesta> respuestas = DaoRespuesta.getInstance().list();
-                JSONArray json = new JSONArray();
-
-                for (Pregunta item : preguntas) {
-                    json.add(convert(item, respuestas));
-                }
-
-                try (PrintWriter out = resp.getWriter()) {
-                    out.print(json.toString());
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Poll.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private JSONObject convert(Pregunta pregunta, List<Respuesta> respuestas) throws SQLException {
-        JSONObject json = new JSONObject();
-        
-        int r = 0;
-        
-        for (Respuesta respuesta : respuestas) {
-            if (true) {
                 
+                try (PrintWriter writer = resp.getWriter()) {
+                    writer.print(response.toString());
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(OpenQuestion.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            throw new NullPointerException("no se recibio el parametro codigo");
         }
-
-//        json.put("poll", historial.getCodigo());
-//        json.put("graduates", historial.getEgresado().getCodigo());
-//        json.put("date", historial.getFecha().toString().substring(0, 10));
-//        json.put("namePoll", DaoEncuesta.getInstance().find(historial.getCodigo()).getNombre());
-
-        return json;
+        
     }
-    
 
     /**
      * Returns a short description of the servlet.
