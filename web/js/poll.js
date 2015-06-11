@@ -351,6 +351,7 @@ app.controller('questionController', function($scope, $http){
         window.location = 'tab.jsp?code='+$scope.questions[index].code+'&poll='+codigo;
     };
 });
+
 app.controller('tabController', function($scope, $http){
     $scope.questions = [];
     var codigo = $.get('code');
@@ -402,6 +403,34 @@ app.controller('tabController', function($scope, $http){
             }
         });
     };
+});
+
+app.controller('estadisticaController', function ($scope, $http) {
+    $scope.polls = [];
+    
+    $http.get('estadisticas')
+            .success(function (data) {
+                $scope.polls = data;
+            })
+            .error(function (err) {
+                console.log(err);
+            });
+});
+
+app.controller('estadisticas2Controller', function ($scope, $http) {
+    $scope.statistic = {};
+    
+    var codigo = $.get('codigo');
+    
+    $http.get('estadisticas2', {
+        params: {
+            code: codigo 
+        }
+    }).success(function (data) {
+       $scope.statistic = data; 
+    }).error(function (err) {
+        console.log(err);
+    });
 });
 
 (function ($) {

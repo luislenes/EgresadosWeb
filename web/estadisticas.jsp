@@ -1,7 +1,7 @@
 <%@page import="com.egresados.model.TipoDeUsuario"%>
-<%@page import="com.egresados.model.Usuario"%>
 <%@page import="com.egresados.model.Administrador"%>
 <%@page import="com.egresados.model.Persona"%>
+<%@page import="com.egresados.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     session = request.getSession(false);
@@ -17,7 +17,7 @@
         <title>Plataforma de egresados de la Universidad de Cartagena</title>
         <link rel="stylesheet" href="css/components.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/historial.css">
+        <link rel="stylesheet" href="css/estadisticas.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <script src="js/poll.js"></script>
@@ -80,23 +80,22 @@
                         <% } %>
                     </ul>
                 </nav>
-            </section><section  class="content" ng-controller="hisPollController">
-                <h2>Historial de encuestas realizadas</h2>
-                <p>En esta sección encontraras todas las encuestas que ya hayas 
-                contestado.</p>
+            </section><section class="content" ng-controller="estadisticaController">
+                <h2>Estadistcas</h2>
+                <p>Aqui encontraras todas las estadisticas de las encuestas.</p>
                 <table>
                     <thead>
                         <tr>
                             <td>Codigo</td>
                             <td>Nombre</td>
-                            <td>Realizada</td>
+                            <td>Porcentaje de respuestas</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="h in history">
-                            <td class="user-number">{{ h.poll}}</td>
-                            <td>{{ h.namePoll}}</td>
-                            <td class="user-number">{{ h.date}}</td>
+                        <tr ng-repeat="poll in polls">
+                            <td>{{poll.code}}</td>
+                            <td><a ng-href="estadisticas2.jsp?codigo={{poll.code}}">{{poll.name}}</a></td>
+                            <td>{{poll.per}}</td>
                         </tr>
                     </tbody>
                 </table>

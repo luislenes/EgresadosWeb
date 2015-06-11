@@ -1,7 +1,7 @@
 <%@page import="com.egresados.model.TipoDeUsuario"%>
-<%@page import="com.egresados.model.Usuario"%>
 <%@page import="com.egresados.model.Administrador"%>
 <%@page import="com.egresados.model.Persona"%>
+<%@page import="com.egresados.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     session = request.getSession(false);
@@ -17,7 +17,7 @@
         <title>Plataforma de egresados de la Universidad de Cartagena</title>
         <link rel="stylesheet" href="css/components.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/historial.css">
+        <link rel="stylesheet" href="css/estadisticas2.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <script src="js/poll.js"></script>
@@ -80,26 +80,27 @@
                         <% } %>
                     </ul>
                 </nav>
-            </section><section  class="content" ng-controller="hisPollController">
-                <h2>Historial de encuestas realizadas</h2>
-                <p>En esta sección encontraras todas las encuestas que ya hayas 
-                contestado.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Codigo</td>
-                            <td>Nombre</td>
-                            <td>Realizada</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="h in history">
-                            <td class="user-number">{{ h.poll}}</td>
-                            <td>{{ h.namePoll}}</td>
-                            <td class="user-number">{{ h.date}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            </section><section class="content" ng-controller="estadisticas2Controller">
+                <h2>{{statistic.name}}</h2>
+                <p>Aqui encontraras todas las estadisticas de las respuestas cerradas.</p>
+                <article ng-repeat="question in statistic.questions">
+                    <h4>{{'Pregunta #' + ($index + 1)}}</h4>
+                    <p>{{question.question}}</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>opcion</td>
+                                <td>porcentaje</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="option in question.options">
+                                <td>{{option.option}}</td>
+                                <td>{{option.per}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
             </section>
         </div>
         <footer>
