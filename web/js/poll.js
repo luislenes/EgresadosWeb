@@ -348,8 +348,28 @@ app.controller('questionController', function($scope, $http){
             });
             
     $scope.tab = function(index){
-        window.location = 'tab.jsp?codigo='+$scope.questions[index].code;
+        window.location = 'tab.jsp?code='+$scope.questions[index].code+'&poll='+codigo;
     };
+});
+app.controller('tabController', function($scope, $http){
+    $scope.questions = [];
+    var codigo = $.get('code');
+    var encuesta = $.get('poll');
+
+    $http.get('respuestasPorTabular',{
+        params: {
+            code: codigo,
+            poll: encuesta
+        }
+    })
+            .success(function (data) {
+                console.log(data);
+                $scope.questions = data;
+                
+            })
+            .error(function (error) {
+                console.log(error);
+            });
 });
 
 (function ($) {

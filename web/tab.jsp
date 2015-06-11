@@ -11,13 +11,16 @@
     Usuario usuario = (Usuario) session.getAttribute("usuario");
 %>
 <!DOCTYPE html>
-<html>
+<html ng-app="EgresadosModule">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Plataforma de egresados de la Universidad de Cartagena</title>
         <link rel="stylesheet" href="css/components.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/tab.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="js/poll.js"></script>
     </head>
     <body>
         <header>
@@ -74,29 +77,17 @@
                         <% } %>
                     </ul>
                 </nav>
-            </section><section class="content">
-                <h2>Nombre de la encuesta</h2>
-                <p>Pregunta: descripción de la pregunta</p>
+            </section><section class="content" ng-controller="tabController">
+                <h2>{{questions.namePoll}}</h2>
+                <p>Pregunta: {{questions.question}}</p>
                 <p>
-                    Chekea todas las respuestas que quieras tabular o que te 
+                    Checkea todas las respuestas que quieras tabular o que te 
                     parezcan parecidas para que las agrupes en una opción.
                 </p>
                 <form>
-                    <p>
-                        <input type="checkbox" value="codigo_respuesta">
-                        Lo que respondieron...
-                    </p>
-                    <p>
-                        <input type="checkbox" value="codigo_respuesta">
-                        Lo que respondieron...
-                    </p>
-                    <p>
-                        <input type="checkbox" value="codigo_respuesta">
-                        Lo que respondieron...
-                    </p>
-                    <p>
-                        <input type="checkbox" value="codigo_respuesta">
-                        Lo que respondieron...
+                    <p ng-repeat="answer in questions.answers">
+                        <input type="checkbox" ng-value="answer.code">
+                        {{answer.answer}}
                     </p>
                     <label>Ahora, simplemente asignale un nombre a la opción o al grupo de respuestas.</label>
                     <input type="text">
