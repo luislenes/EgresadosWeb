@@ -6,8 +6,10 @@
 package com.egresados.servlet;
 
 import com.egresados.dao.DaoEncuesta;
+import com.egresados.dao.DaoOpcion;
 import com.egresados.dao.DaoPregunta;
 import com.egresados.dao.DaoRespuesta;
+import com.egresados.model.Opcion;
 import com.egresados.model.Respuesta;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,7 +53,7 @@ public class OpenAnswer extends HttpServlet {
                 JSONArray array = new JSONArray();
                 for (Respuesta value : list) {
                     JSONObject resp = new JSONObject();
-                    resp.put("code", value.getContenido());
+                    resp.put("code", value.getEgresado());
                     resp.put("answer", value.getContenido());
                     array.add(resp);
                 }
@@ -66,6 +68,36 @@ public class OpenAnswer extends HttpServlet {
             }
         } catch (SQLException ex) {
             Logger.getLogger(OpenAnswer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        JSONObject json = new JSONObject();
+        
+        String codeResponse = request.getParameter("response");
+        String codePoll = request.getParameter("poll");
+        String codeQuestion = request.getParameter("code");
+        String tabular = request.getParameter("tab");
+        
+        Opcion op = new Opcion(codePoll, codeQuestion, tabular);
+        try {
+            DaoOpcion.getInstance().insert(op);
+            DaoRespuesta.getInstance().update(codeResponse, codePoll, codeQuestion, op);
+            json.put("message", "bien, inserto perfectamente la opcion y tabulo la respuesta");
+            json.put("status", "done");
+        } catch (SQLException ex) {
+            Logger.getLogger(OpenAnswer.class.getName()).log(Level.SEVERE, null, ex);
+            json.put("message", "error, ocurrio un error al conectarse con la base de datos.");
+            json.put("status", "error");
+        } finally {
+            try (PrintWriter out = response.getWriter()) {
+                out.print(json.toString());
+            }
         }
     }
 
