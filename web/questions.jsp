@@ -93,11 +93,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Esto es una pregunta</td>
-                            <td class="user-number">0</td>
+                        <tr ng-repeat="question in questions">
+                            <td>{{ question.question}}</td>
+                            <td class="user-number">{{ question.answers}}</td>
                             <td class="user-button">
-                                <button class="btn btn-enable">tabular</button>
+                                <button class="btn btn-enable" ng-click="tab($index)">
+                                    tabular</button>
                             </td>
                         </tr>
                     </tbody>

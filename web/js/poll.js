@@ -331,18 +331,25 @@ app.controller('closeAnswersController', function($scope, $http){
 
 app.controller('questionController', function($scope, $http){
     $scope.questions = [];
+    var codigo = $.get('codigo');
 
-    $http.get('respuesta')
+    $http.get('preguntasAbiertas',{
+        params: {
+            codigo: codigo
+        }
+    })
             .success(function (data) {
                 console.log(data);
-                $scope.questions = data.filter(function(item){
-                    return item.option === null;
-                });
+                $scope.questions = data;
                 
             })
             .error(function (error) {
                 console.log(error);
             });
+            
+    $scope.tab = function(index){
+        window.location = 'tab.jsp?codigo='+$scope.questions[index].code;
+    };
 });
 
 (function ($) {
