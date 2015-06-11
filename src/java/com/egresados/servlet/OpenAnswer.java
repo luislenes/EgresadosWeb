@@ -87,7 +87,12 @@ public class OpenAnswer extends HttpServlet {
         Opcion op = new Opcion(codePoll, codeQuestion, tabular);
         try {
             DaoOpcion.getInstance().insert(op);
-            DaoRespuesta.getInstance().update(codeResponse, codePoll, codeQuestion, op);
+            String[] split = codeResponse.split("-");
+            for (String value : split) {
+                if (!value.equals("")) {
+                    DaoRespuesta.getInstance().update(value, codePoll, codeQuestion, op);
+                }
+            }
             json.put("message", "bien, inserto perfectamente la opcion y tabulo la respuesta");
             json.put("status", "done");
         } catch (SQLException ex) {
