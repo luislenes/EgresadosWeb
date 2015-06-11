@@ -357,8 +357,6 @@ app.controller('tabController', function($scope, $http){
     var codigo = $.get('code');
     var encuesta = $.get('poll');
     $scope.txtTab = "";
-    var response = "";
-    var data = {};
 
     $scope.getTab = function(){
         $http.get('respuestasPorTabular', {
@@ -377,6 +375,7 @@ app.controller('tabController', function($scope, $http){
     $scope.getTab();
     
     $scope.submitTab = function(){
+        var response = "";
         for (var i = 0; i < $scope.questions.answers.length; i++) {
             if ($scope.questions.answers[i].check) {
                 response += $scope.questions.answers[i].code+"-";

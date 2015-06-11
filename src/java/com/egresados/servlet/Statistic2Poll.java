@@ -58,7 +58,8 @@ public class Statistic2Poll extends HttpServlet {
                         JSONObject option = new JSONObject();
                         option.put("option", opcion.getCuerpo());
                         int nOption = DaoRespuesta.getInstance().countAnswerByCodeOption(opcion.getCodigo());
-                        option.put("per", (nOption / nResponse * 100) + "%");
+                        float per = ((float) nOption) / ((float) nResponse);
+                        option.put("per", (per * 100) + "%");
                         options.add(option);
                     }
                     question.put("options", options);
