@@ -51,6 +51,7 @@ public class OpenAnswer extends HttpServlet {
                 JSONArray array = new JSONArray();
                 for (Respuesta value : list) {
                     JSONObject resp = new JSONObject();
+                    resp.put("code", value.getContenido());
                     resp.put("answer", value.getContenido());
                     array.add(resp);
                 }
@@ -58,7 +59,7 @@ public class OpenAnswer extends HttpServlet {
                 json.put("answers", array);
 
                 try (PrintWriter out = response.getWriter()) {
-                    out.print(json);
+                    out.print(json.toString());
                 }
             } else {
                 throw new NullPointerException("No se recibieron los parametros, o por lo menos falta uno de los dos.");
