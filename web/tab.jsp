@@ -84,13 +84,13 @@
                     Checkea todas las respuestas que quieras tabular o que te 
                     parezcan parecidas para que las agrupes en una opción.
                 </p>
-                <form>
+                <form ng-submit="submitTab()">
                     <p ng-repeat="answer in questions.answers">
-                        <input type="checkbox" ng-value="answer.code">
+                        <input type="checkbox" ng-value="answer.code" ng-model="answer.check">
                         {{answer.answer}}
                     </p>
                     <label>Ahora, simplemente asignale un nombre a la opción o al grupo de respuestas.</label>
-                    <input type="text">
+                    <input type="text" ng-model="txtTab">
                     <input type="submit" value="Tabular" class="btn btn-default">
                 </form>
             </section>

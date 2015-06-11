@@ -355,21 +355,53 @@ app.controller('tabController', function($scope, $http){
     $scope.questions = [];
     var codigo = $.get('code');
     var encuesta = $.get('poll');
+    $scope.txtTab = "";
+    var response = "";
+    var data = {};
 
-    $http.get('respuestasPorTabular',{
-        params: {
-            code: codigo,
-            poll: encuesta
+    $scope.getTab = function(){
+        $http.get('respuestasPorTabular', {
+            params: {
+                code: codigo,
+                poll: encuesta
+            }
+        }).success(function (data) {
+            console.log(data);
+            $scope.questions = data;
+
+        }).error(function (error) {
+            console.log(error);
+        });
+    };
+    $scope.getTab();
+    
+    $scope.submitTab = function(){
+        for (var i = 0; i < $scope.questions.answers.length; i++) {
+            if ($scope.questions.answers[i].check) {
+                response += $scope.questions.answers[i].code+"-";
+            }
         }
-    })
-            .success(function (data) {
+        $.ajax({
+            url: 'respuestasPorTabular',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                    response: response,
+                    poll: $scope.questions.codePoll,
+                    code: $scope.questions.codeQuestion,
+                    tab: $scope.txtTab
+                },
+            success: function (data) {
                 console.log(data);
-                $scope.questions = data;
-                
-            })
-            .error(function (error) {
+                alert('Se tabularon las respuestas correctamente.');
+                $scope.getTab();
+                console.log($scope);
+            },
+            error: function (error) {
                 console.log(error);
-            });
+            }
+        });
+    };
 });
 
 (function ($) {
